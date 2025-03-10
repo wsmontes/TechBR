@@ -843,7 +843,7 @@ footer p {
     
     .language-toggle {
         order: 1;
-        margin-right: 20px;
+        margin-right: 20px; /* additional space if needed */
     }
     
     .menu-toggle {
@@ -853,6 +853,15 @@ footer p {
     /* Ensure header container keeps logo left and nav right */
     header .container {
         justify-content: space-between;
+        width: 100%;
+    }
+    
+    nav {
+        flex: 1;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
     }
     
     .about-mission .container,
