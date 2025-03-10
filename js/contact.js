@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const style = document.createElement('style');
     style.textContent = `
         .form-control.error {
-            border-color: #ff3860;
+            border-color: #EC8305;
         }
         
         .form-message {
@@ -170,15 +170,15 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         .form-message.error {
-            background-color: #feecf0;
-            color: #cc0f35;
-            border-left: 4px solid #cc0f35;
+            background-color: rgba(236, 131, 5, 0.1);
+            color: #D27000;
+            border-left: 4px solid #EC8305;
         }
         
         .form-message.success {
-            background-color: #effaf3;
-            color: #257942;
-            border-left: 4px solid #257942;
+            background-color: #e5f2fa;
+            color: #024CAA;
+            border-left: 4px solid #024CAA;
         }
     `;
     document.head.appendChild(style);

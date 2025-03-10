@@ -103,75 +103,18 @@
         </div>
     </section>
 
-    <div class="community-tips">
-        <h2>Community Tips</h2>
-        <div class="tips-container">
-            <div class="tip-card">
-                <img src="images/tip-avatar1.jpg" alt="Community Member">
-                <blockquote>
-                    "For newcomers, I recommend checking out the free resume workshops at WorkBC. They helped me adapt my Brazilian CV to Canadian expectations."
-                    <cite>- Marina, Software Developer</cite>
-                </blockquote>
-            </div>
-            <div class="tip-card">
-                <img src="images/tip-avatar2.jpg" alt="Community Member">
-                <blockquote>
-                    "Don't miss Victoria's tech events like Startup Slam and VIATEC awards. Great networking and sometimes there's free food!"
-                    <cite>- Pedro, UX Designer</cite>
-                </blockquote>
-            </div>
-            <div class="tip-card">
-                <img src="images/tip-avatar3.jpg" alt="Community Member">
-                <blockquote>
-                    "The best coffee spot for remote work is Caffe Fantastico. Good wifi, plenty of outlets, and they don't mind if you stay for hours."
-                    <cite>- Thais, Product Manager</cite>
-                </blockquote>
-            </div>
-            <div class="tip-card">
-                <img src="images/tip-avatar3.jpg" alt="Community Member">
-                <blockquote>
-                    "Finding good pão de queijo in Victoria is challenging! I recommend joining our potlucks where someone always brings homemade Brazilian treats."
-                    <cite>- Thais, Product Manager</cite>
-                </blockquote>
-            </div>
-        </div>
-    </div>
+    <!-- Removed community tips section -->
 
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>TechBR Victoria</h3>
-                    <p>A community of Brazilian IT professionals in Victoria, BC, Canada.</p>
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/company/techbr-victoria/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-meetup"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="members.html">Members</a></li>
-                        <li><a href="events.html">Events</a></li>
-                        <li><a href="resources.html">Resources</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Contact</h3>
-                    <p><i class="fas fa-envelope"></i> techbrvictoria@gmail.com</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Victoria, BC, Canada</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2023 TechBR Victoria. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <!-- Remove the current footer markup -->
+    <div id="footer-placeholder"></div>
+    <script>
+        fetch('footer-template.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('footer-placeholder').innerHTML = html;
+            })
+            .catch(err => console.error('Error loading footer:', err));
+    </script>
 
     <script src="js/main.js"></script>
 </body>

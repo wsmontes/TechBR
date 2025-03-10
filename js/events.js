@@ -385,11 +385,11 @@ document.addEventListener('DOMContentLoaded', function() {
             bottom: 30px;
             left: 50%;
             transform: translateX(-50%) translateY(100px);
-            background-color: var(--primary-color);
+            background-color: #024CAA;
             color: white;
             padding: 12px 24px;
             border-radius: 30px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 12px rgba(2, 76, 170, 0.15);
             font-weight: 500;
             z-index: 1000;
             opacity: 0;
@@ -402,8 +402,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         .btn.confirmed {
-            background-color: #4CAF50;
-            border-color: #4CAF50;
+            background: linear-gradient(135deg, #00A1E4, #0077AD);
+            border-color: #0077AD;
             color: white;
         }
     `;

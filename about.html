@@ -60,33 +60,7 @@
         </div>
     </section>
 
-    <section class="what-we-do">
-        <div class="container">
-            <h2>What We Do</h2>
-            <div class="activities-grid">
-                <div class="activity-card">
-                    <i class="fas fa-mug-hot"></i>
-                    <h3>Coffee Meetups</h3>
-                    <p>Monthly casual gatherings at local cafes to chat and connect.</p>
-                </div>
-                <div class="activity-card">
-                    <i class="fas fa-laptop-code"></i>
-                    <h3>Tech Talks</h3>
-                    <p>Occasional informal knowledge sharing sessions.</p>
-                </div>
-                <div class="activity-card">
-                    <i class="fas fa-utensils"></i>
-                    <h3>Social Gatherings</h3>
-                    <p>Brazilian food gatherings and cultural events.</p>
-                </div>
-                <div class="activity-card">
-                    <i class="fas fa-hiking"></i>
-                    <h3>Outdoor Adventures</h3>
-                    <p>Exploring beautiful Vancouver Island together.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Removed "What We Do" section -->
 
     <section class="cta">
         <div class="container">
@@ -96,42 +70,17 @@
         </div>
     </section>
 
-    <footer>
-        <!-- Same footer as index.html -->
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>TechBR Victoria</h3>
-                    <p>A community of Brazilian IT professionals in Victoria, BC, Canada.</p>
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/company/techbr-victoria/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-meetup"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="members.html">Members</a></li>
-                        <li><a href="events.html">Events</a></li>
-                        <li><a href="resources.html">Resources</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Contact</h3>
-                    <p><i class="fas fa-envelope"></i> techbrvictoria@gmail.com</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Victoria, BC, Canada</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2023 TechBR Victoria. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <!-- Remove existing footer markup -->
+    <!-- Add footer placeholder -->
+    <div id="footer-placeholder"></div>
+    <script>
+        fetch('footer-template.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('footer-placeholder').innerHTML = html;
+            })
+            .catch(err => console.error('Error loading footer:', err));
+    </script>
 
     <script src="js/main.js"></script>
 </body>

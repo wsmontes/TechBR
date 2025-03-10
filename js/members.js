@@ -52,30 +52,30 @@ async function fetchMembersData() {
 
 /**
  * Parse CSV data to extract member information
- * Column A: Member Name
- * Column B: LinkedIn URL
+ * Column A: Member Name, Column B: LinkedIn URL, Column C: Title/Expertise
  */
 function parseCSVToMembers(csvText) {
     const members = [];
-    const lines = csvText.split('\n');
+    const lines = csvText.trim().split('\n');
     
     // Skip header row
     for (let i = 1; i < lines.length; i++) {
         const line = lines[i].trim();
         if (!line) continue;
         
-        // Split the line into columns (handle possible commas in the name)
         const columns = line.split(',');
+        if (columns.length < 3) continue;
         
-        // Extract name and LinkedIn URL
-        const name = columns[0].trim();
-        // Join the remaining columns in case the URL got split due to commas
-        const linkedInUrl = columns.slice(1).join(',').trim();
+        const memberName = columns[0].trim();
+        const linkedInUrl = columns[1].trim();
+        const expertiseEncoded = columns[2].trim();
+        const expertise = decodeURIComponent(expertiseEncoded);
         
-        if (name && linkedInUrl && linkedInUrl.includes('linkedin.com')) {
+        if (linkedInUrl && expertise && linkedInUrl.includes('linkedin.com')) {
             members.push({
-                name: name,
-                linkedInUrl: linkedInUrl
+                name: memberName,
+                linkedInUrl: linkedInUrl,
+                expertise: expertise
             });
         }
     }
@@ -84,21 +84,17 @@ function parseCSVToMembers(csvText) {
 }
 
 /**
- * Render member profiles from their names and LinkedIn URLs
+ * Render member profiles using the provided member name, LinkedIn URL, and expertise
  */
 function renderMemberProfiles(members, container) {
-    let html = `<h2>${members.length} Community Members</h2>`;
+    let html = '<div class="members-grid">';
     
-    // Create grid to display member cards
-    html += '<div class="members-grid">';
-    
-    // Create a card for each member
     members.forEach(member => {
         html += `
             <div class="member-card">
                 <div class="member-info">
                     <h3>${member.name}</h3>
-                    <p class="member-note">LinkedIn Profile</p>
+                    <div class="member-title">${member.expertise}</div>
                     <a href="${member.linkedInUrl}" target="_blank" rel="noopener noreferrer" class="linkedin-button">
                         <i class="fab fa-linkedin"></i> View Profile
                     </a>
@@ -109,10 +105,13 @@ function renderMemberProfiles(members, container) {
     
     html += '</div>';
     
-    // Add a note about joining the directory
+    // Updated join note without former website reference.
     html += `
         <div class="members-note">
-            <p><i class="fas fa-info-circle"></i> Want to be included in our directory? <a href="contact.html">Contact us</a> with your LinkedIn profile URL.</p>
+            <p>
+                <i class="fas fa-info-circle"></i> Want to be included in our directory? 
+                <a href="contact.html">Contact us</a> with your LinkedIn profile URL.
+            </p>
         </div>
     `;
     
@@ -126,8 +125,6 @@ function renderMemberProfiles(members, container) {
                 window.open(linkedinUrl, '_blank');
             }
         });
-        
-        // Add cursor style to indicate clickability
         card.style.cursor = 'pointer';
     });
 }
@@ -143,22 +140,24 @@ document.head.insertAdjacentHTML('beforeend', `
     }
     
     .member-card {
-        background-color: #f5f5f5;
-        border-radius: 8px;
+        background-color: #FFFFFF;
+        border-radius: 10px;
         padding: 20px;
-        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        box-shadow: 0 3px 10px rgba(9, 16, 87, 0.1);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         text-align: center;
+        border-top: 3px solid #024CAA;
     }
     
     .member-card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        box-shadow: 0 5px 15px rgba(9, 16, 87, 0.15);
     }
     
     .member-info h3 {
         margin-bottom: 5px;
         font-size: 1.2rem;
+        color: #091057;
     }
     
     .member-note {
@@ -169,16 +168,16 @@ document.head.insertAdjacentHTML('beforeend', `
     
     .linkedin-button {
         display: inline-block;
-        background-color: #0077B5;
+        background-color: #024CAA;
         color: white;
         padding: 8px 15px;
-        border-radius: 4px;
+        border-radius: 6px;
         text-decoration: none;
         transition: background-color 0.3s;
     }
     
     .linkedin-button:hover {
-        background-color: #005e93;
+        background-color: #023A80;
         color: white;
     }
     
@@ -189,32 +188,32 @@ document.head.insertAdjacentHTML('beforeend', `
     .loading-state {
         text-align: center;
         padding: 40px 0;
-        color: #555;
+        color: #091057;
     }
     
     .loading-state i {
         margin-right: 10px;
-        color: #0077B5;
+        color: #024CAA;
     }
     
     .members-note {
         text-align: center;
         margin-top: 30px;
         padding: 15px;
-        background-color: #f0f0f0;
-        border-radius: 8px;
+        background-color: #DBD3D3;
+        border-radius: 10px;
     }
     
     .error-message {
         text-align: center;
         padding: 20px;
-        background-color: #fff0f0;
-        border-left: 4px solid #ff3333;
+        background-color: rgba(236, 131, 5, 0.1);
+        border-left: 4px solid #EC8305;
         margin: 20px 0;
     }
     
     .error-message i {
-        color: #ff3333;
+        color: #EC8305;
         margin-right: 8px;
     }
     
@@ -225,3 +224,17 @@ document.head.insertAdjacentHTML('beforeend', `
     }
 </style>
 `);
+
+// NEW: Append the former website reference into the footer.
+document.addEventListener('DOMContentLoaded', function() {
+    const footer = document.querySelector('footer');
+    if (footer) {
+         const formerDiv = document.createElement('div');
+         formerDiv.className = 'former-website';
+         formerDiv.style.fontSize = '0.8rem';
+         formerDiv.style.textAlign = 'center';
+         formerDiv.style.paddingTop = '10px';
+         formerDiv.innerHTML = 'Former website: <a href="https://techbrvictoria.wixsite.com/techbr" target="_blank" rel="noopener noreferrer">techbrvictoria.wixsite.com/techbr</a>';
+         footer.appendChild(formerDiv);
+    }
+});
