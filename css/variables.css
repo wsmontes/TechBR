@@ -1,0 +1,22 @@
+:root {
+    /* Colors */
+    --primary-color: #009c3b; /* Green from Brazilian flag */
+    --secondary-color: #002776; /* Blue from Brazilian flag */
+    --accent-color: #ffdf00; /* Yellow from Brazilian flag */
+    --canadian-red: #ff0000; /* Red from Canadian flag */
+    
+    /* Text colors */
+    --dark-text: #333333;
+    --light-text: #ffffff;
+    
+    /* Background colors */
+    --light-bg: #f5f5f5;
+    --medium-bg: #e9e9e9;
+    
+    /* Spacing and sizing */
+    --border-radius: 4px;
+    --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+    --container-width: 1200px;
+    --header-height: 80px;
+}

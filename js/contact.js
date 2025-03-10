@@ -1,6 +1,6 @@
 /**
  * TechBR Victoria - Contact Form JavaScript
- * Handles form validation and submission
+ * Handles form validation and submission with a friendly approach
  */
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -16,16 +16,16 @@ document.addEventListener('DOMContentLoaded', function() {
             const emailInput = document.getElementById('email');
             const subjectSelect = document.getElementById('subject');
             const messageTextarea = document.getElementById('message');
-            const subscribeCheckbox = document.getElementById('subscribe');
+            const whatsappCheckbox = document.getElementById('whatsapp');
             
-            // Validate form fields
+            // Validate form fields with friendly messages
             let isValid = true;
             let errorMessages = [];
             
             // Name validation
             if (nameInput.value.trim() === '') {
                 isValid = false;
-                errorMessages.push('Please enter your name');
+                errorMessages.push('We\'d love to know your name!');
                 nameInput.classList.add('error');
             } else {
                 nameInput.classList.remove('error');
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(emailInput.value)) {
                 isValid = false;
-                errorMessages.push('Please enter a valid email address');
+                errorMessages.push('We need a valid email so we can get back to you');
                 emailInput.classList.add('error');
             } else {
                 emailInput.classList.remove('error');
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Subject validation
             if (subjectSelect.value === '') {
                 isValid = false;
-                errorMessages.push('Please select a subject');
+                errorMessages.push('Please let us know what this is about');
                 subjectSelect.classList.add('error');
             } else {
                 subjectSelect.classList.remove('error');
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Message validation
             if (messageTextarea.value.trim() === '') {
                 isValid = false;
-                errorMessages.push('Please enter your message');
+                errorMessages.push('Don\'t forget to write your message!');
                 messageTextarea.classList.add('error');
             } else {
                 messageTextarea.classList.remove('error');
@@ -67,20 +67,23 @@ document.addEventListener('DOMContentLoaded', function() {
                     email: emailInput.value,
                     subject: subjectSelect.value,
                     message: messageTextarea.value,
-                    subscribeNewsletter: subscribeCheckbox.checked
+                    joinWhatsApp: whatsappCheckbox.checked
                 };
                 
-                // Simulate form submission
                 console.log('Form data:', formData);
                 
-                // Show success message
-                showFormMessage('Your message has been sent successfully. We will get back to you soon!', 'success');
+                // Show appropriate success message based on WhatsApp checkbox
+                if (whatsappCheckbox.checked) {
+                    showFormMessage(`Thanks ${nameInput.value.split(' ')[0]}! We'll send you an invite to our WhatsApp group soon!`, 'success');
+                } else {
+                    showFormMessage(`Thanks for reaching out, ${nameInput.value.split(' ')[0]}! We'll get back to you soon!`, 'success');
+                }
                 
                 // Reset form
                 contactForm.reset();
             } else {
-                // Show error messages
-                showFormMessage(errorMessages.join('<br>'), 'error');
+                // Show error messages with a friendly tone
+                showFormMessage(`Oops! ${errorMessages.join(' ')}`, 'error');
             }
         });
         
@@ -99,6 +102,9 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Insert message at the top of the form
             contactForm.insertBefore(messageElement, contactForm.firstChild);
+            
+            // Scroll to see the message if it's not visible
+            messageElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             
             // Auto-hide message after 5 seconds for success messages
             if (type === 'success') {
@@ -126,6 +132,28 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+    
+    // Handle anchor links to the form
+    const formLinks = document.querySelectorAll('a[href="#contactForm"]');
+    formLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Scroll to the form
+            contactForm.scrollIntoView({ behavior: 'smooth' });
+            
+            // Focus on the first input
+            setTimeout(() => {
+                document.getElementById('name').focus();
+            }, 800);
+            
+            // If there's a WhatsApp checkbox, check it
+            const whatsappCheckbox = document.getElementById('whatsapp');
+            if (whatsappCheckbox) {
+                whatsappCheckbox.checked = true;
+            }
+        });
+    });
     
     // Add CSS for form validation and messages
     const style = document.createElement('style');

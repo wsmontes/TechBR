@@ -1,82 +1,82 @@
 /**
- * TechBR Victoria - Events JavaScript
- * Handles events listing, filtering, and calendar functionality
+ * TechBR Victoria - Hangouts & Events JavaScript
+ * Handles community gatherings listing and filtering
  */
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Sample events data
-    // In a real application, this would come from a backend API
+    // Sample events data - replaced with more casual community events
+    // In a real implementation, this would come from a community calendar or Google Sheet
     const events = [
         {
             id: 1,
-            title: "Tech Talk: Cloud Computing in 2023",
-            description: "Join us for an informative session on the latest trends in cloud computing with special guest speakers from Amazon Web Services.",
-            date: "2023-06-15",
-            time: "18:30",
-            location: "VIATEC, 777 Fort St, Victoria, BC",
-            image: "images/event1.jpg",
-            category: "technical",
+            title: "Monthly Coffee & Chat",
+            description: "Let's catch up over some coffee! Come share what you're working on, ask for advice, or just enjoy some Brazilian-style conversations in the midst of Canadian life.",
+            date: "2023-07-15",
+            time: "14:00",
+            location: "Discovery Coffee, 664 Discovery St, Victoria, BC",
+            image: "images/coffee-chat.jpg",
+            category: "social",
             featured: true,
             past: false
         },
         {
             id: 2,
-            title: "Summer Networking BBQ",
-            description: "Come enjoy some Brazilian BBQ, drinks, and great networking opportunities with fellow tech professionals.",
-            date: "2023-06-28",
+            title: "Churrasco at the Beach",
+            description: "It's summer! Time for our annual Brazilian BBQ at Willows Beach. Bring something to share if you can, but most importantly, bring yourself!",
+            date: "2023-07-28",
             time: "17:00",
             location: "Willows Beach, Oak Bay, Victoria, BC",
-            image: "images/event2.jpg",
+            image: "images/beach-bbq.jpg",
             category: "social",
             featured: true,
             past: false
         },
         {
             id: 3,
-            title: "Workshop: Building Your Personal Brand",
-            description: "Learn how to build and promote your personal brand to advance your career in the competitive tech landscape.",
-            date: "2023-07-10",
-            time: "10:00",
-            location: "Victoria Public Library, 735 Broughton St",
-            image: "images/event3.jpg",
-            category: "career",
+            title: "Code & Coxinha Night",
+            description: "A casual evening of coding together, helping each other with projects, and enjoying some homemade coxinhas that Eduardo promised to make!",
+            date: "2023-08-10",
+            time: "19:00",
+            location: "CodeSpace Victoria, 735 Broughton St",
+            image: "images/coding-session.jpg",
+            category: "tech",
             featured: true,
             past: false
         },
         {
             id: 4,
-            title: "Code & Coffee",
-            description: "Informal morning meetup to code together, share projects, and enjoy some great coffee.",
-            date: "2023-07-20",
-            time: "08:30",
-            location: "Discovery Coffee, 664 Discovery St",
-            image: "images/event4.jpg",
-            category: "technical",
+            title: "Hiking at Mount Douglas",
+            description: "Let's enjoy the beautiful nature around Victoria! An easy hike suitable for all levels, followed by a coffee at a nearby cafe.",
+            date: "2023-08-20",
+            time: "10:00",
+            location: "Mount Douglas Park, Main Entrance",
+            image: "images/hiking.jpg",
+            category: "social",
             featured: false,
             past: false
         },
         {
             id: 5,
-            title: "Introduction to Machine Learning",
-            description: "A beginner-friendly workshop on the basics of machine learning with Python.",
-            date: "2023-05-05",
-            time: "18:00",
-            location: "UVic, Engineering Building, Room 130",
-            image: "images/event5.jpg",
-            category: "technical",
+            title: "Remote Work Café Hopping",
+            description: "Work remotely? Let's meet up and work together from a few different cafés around downtown Victoria. We'll start at Hey Happy Coffee.",
+            date: "2023-06-05",
+            time: "09:00",
+            location: "Hey Happy Coffee, 560 Johnson St",
+            image: "images/remote-work.jpg",
+            category: "social",
             featured: false,
             past: true
         }
     ];
     
-    // Function to format date nicely
+    // Function to format date in a friendly way
     const formatDate = (dateStr, timeStr) => {
         const date = new Date(`${dateStr}T${timeStr}`);
-        const options = { year: 'numeric', month: 'long', day: 'numeric' };
-        return `${date.toLocaleDateString('en-US', options)} - ${formatTime(timeStr)}`;
+        const options = { weekday: 'long', month: 'long', day: 'numeric' };
+        return `${date.toLocaleDateString('en-US', options)} at ${formatTime(timeStr)}`;
     };
     
-    // Function to format time
+    // Function to format time in a friendly way
     const formatTime = (timeStr) => {
         const [hours, minutes] = timeStr.split(':');
         const hour = parseInt(hours);
@@ -89,13 +89,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const upcomingEventsContainer = document.getElementById('upcoming-events-list');
     
     if (upcomingEventsContainer) {
-        // Get only featured upcoming events
-        const featuredEvents = events.filter(event => event.featured && !event.past);
+        // Get upcoming events
+        const upcomingEvents = events.filter(event => !event.past).slice(0, 3);
         
-        if (featuredEvents.length > 0) {
+        if (upcomingEvents.length > 0) {
             upcomingEventsContainer.innerHTML = '';
             
-            featuredEvents.forEach(event => {
+            upcomingEvents.forEach(event => {
                 upcomingEventsContainer.innerHTML += `
                     <div class="event-card">
                         <div class="event-image">
@@ -112,11 +112,18 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <i class="fas fa-map-marker-alt"></i>
                                 <span>${event.location}</span>
                             </div>
-                            <a href="#" class="btn primary">Register</a>
+                            <a href="#" class="btn primary">I'll Be There!</a>
                         </div>
                     </div>
                 `;
             });
+        } else {
+            upcomingEventsContainer.innerHTML = `
+                <div class="no-events">
+                    <p>No upcoming hangouts scheduled yet, but we're planning some! Check back soon or suggest one.</p>
+                    <a href="contact.html" class="btn secondary">Suggest a Hangout</a>
+                </div>
+            `;
         }
     }
     
@@ -156,12 +163,13 @@ document.addEventListener('DOMContentLoaded', function() {
         renderEvents(upcomingEvents, eventsListContainer);
     }
     
-    // Function to render events
+    // Function to render events in a more friendly way
     function renderEvents(eventsList, container) {
         if (eventsList.length === 0) {
             container.innerHTML = `
                 <div class="no-events">
-                    <p>No events found matching your criteria.</p>
+                    <p>Nothing here yet! Want to organize something?</p>
+                    <a href="contact.html" class="btn secondary">Suggest a Hangout</a>
                 </div>
             `;
             return;
@@ -187,8 +195,8 @@ document.addEventListener('DOMContentLoaded', function() {
                             <span>${event.location}</span>
                         </div>
                         ${event.past ? 
-                            '<span class="event-past">Past Event</span>' : 
-                            '<a href="#" class="btn primary">Register</a>'
+                            '<span class="event-past">Already happened</span>' : 
+                            '<a href="#" class="btn primary">Count Me In</a>'
                         }
                     </div>
                 </div>
@@ -317,4 +325,87 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+    
+    // Simple RSVP tracking (would be connected to a backend in production)
+    document.addEventListener('click', function(e) {
+        if (e.target && e.target.classList.contains('btn') && 
+            (e.target.textContent.includes('Count Me In') || 
+             e.target.textContent.includes('Be There') || 
+             e.target.textContent.includes('Register'))) {
+            
+            e.preventDefault();
+            
+            // Get the event card
+            const eventCard = e.target.closest('.event-card');
+            if (eventCard) {
+                const eventTitle = eventCard.querySelector('h3').textContent;
+                
+                // In a real implementation, this would send the RSVP to a server
+                console.log(`RSVP for: ${eventTitle}`);
+                
+                // Update button to show confirmation
+                e.target.textContent = "You're In! 👍";
+                e.target.classList.add('confirmed');
+                setTimeout(() => {
+                    e.target.textContent = "I'll Be There!";
+                    e.target.classList.remove('confirmed');
+                }, 3000);
+                
+                // Show a little toast message
+                showToast("We've got you on the list! See you there!");
+            }
+        }
+    });
+    
+    // Toast message function for casual notifications
+    function showToast(message) {
+        const toast = document.createElement('div');
+        toast.className = 'toast-message';
+        toast.textContent = message;
+        
+        document.body.appendChild(toast);
+        
+        setTimeout(() => {
+            toast.classList.add('show');
+        }, 100);
+        
+        setTimeout(() => {
+            toast.classList.remove('show');
+            setTimeout(() => {
+                document.body.removeChild(toast);
+            }, 300);
+        }, 3000);
+    }
+    
+    // Add toast styles
+    const toastStyle = document.createElement('style');
+    toastStyle.textContent = `
+        .toast-message {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            font-weight: 500;
+            z-index: 1000;
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        
+        .toast-message.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+        
+        .btn.confirmed {
+            background-color: #4CAF50;
+            border-color: #4CAF50;
+            color: white;
+        }
+    `;
+    document.head.appendChild(toastStyle);
 });

@@ -1,31 +1,30 @@
-# TechBR Victoria - Brazilian IT Professionals in Victoria, BC
+# TechBR Victoria - Brazilian Tech Community in Victoria, BC
 
-This repository contains the website for TechBR Victoria, a community of Brazilian IT professionals living and working in Victoria, British Columbia, Canada.
+This repository contains the website for TechBR Victoria, a community of Brazilian tech professionals living and working in Victoria, British Columbia, Canada.
 
-## About The Project
+## About Our Community
 
-TechBR Victoria exists to connect, support, and empower Brazilian technology professionals in Victoria, BC. We aim to create a thriving network that fosters professional growth, cultural connection, and community integration.
+We're a casual group of Brazilian tech professionals who get together for coffee, share job opportunities, help newcomers navigate life in Victoria, and celebrate our culture while building our careers in Canada.
 
 ## Website Structure
 
-- **Home** - Landing page with key information about our community
-- **About** - Information about our mission, history, and leadership team
-- **Members** - Directory of Brazilian IT professionals in Victoria
-- **Events** - Upcoming and past events organized by the community
-- **Resources** - Helpful information for Brazilian tech professionals
-- **Contact** - Contact form and information
+- **Home** - Welcome page with community information
+- **About** - The story of how our community came together
+- **Members** - Information about our community members
+- **Events** - Our gatherings calendar
+- **Resources** - Helpful tips for Brazilians in Victoria
+- **Contact** - How to get in touch and join our WhatsApp group
 
 ## Technologies Used
 
 - HTML5
-- CSS3 (with modern layout techniques like Grid and Flexbox)
+- CSS3 with responsive design
 - Vanilla JavaScript
-- Font Awesome for icons
-- Google Maps API for location maps
+- Font Awesome icons
 
-## Getting Started
+## Local Development
 
-To work on this project locally:
+To work on this website locally:
 
 1. Clone the repository
    ```
@@ -34,28 +33,11 @@ To work on this project locally:
 
 2. Open the project in your favorite code editor
 
-3. Launch the website using a local development server
-
-## Deployment
-
-This website is deployed using GitHub Pages at [techbrvictoria.github.io](https://techbrvictoria.github.io).
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a pull request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a pull request
-
-## License
-
-Distributed under the MIT License. See `LICENSE` for more information.
+3. Launch using a local development server (like Live Server for VS Code)
 
 ## Contact
 
-TechBR Victoria - info@techbrvictoria.ca
-
-Project Link: [https://github.com/techbrvictoria/techbrvictoria.github.io](https://github.com/techbrvictoria/techbrvictoria.github.io)
+Want to join our community? 
+- Email: hello@techbrvictoria.ca
+- LinkedIn: [TechBR Victoria](https://www.linkedin.com/company/techbr-victoria/)
+- Or fill out the contact form on our website!

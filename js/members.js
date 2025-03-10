@@ -1,161 +1,227 @@
 /**
- * TechBR Victoria - Members JavaScript
- * Handles member filtering and search functionality
+ * TechBR Victoria - LinkedIn Integration
+ * Handles fetching member data from LinkedIn profile URLs in Google Sheets
  */
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Sample members data
-    // In a real application, this would come from a backend API
-    const members = [
-        {
-            id: 1,
-            name: "Rafael Silva",
-            title: "Senior Frontend Developer",
-            bio: "Specialist in React and Vue.js with 8+ years experience.",
-            image: "images/member1.jpg",
-            category: "developer",
-            skills: ["JavaScript", "React", "Vue.js", "CSS", "HTML5"]
-        },
-        {
-            id: 2,
-            name: "Camila Oliveira",
-            title: "UX/UI Designer",
-            bio: "Creating accessible and inclusive designs for web and mobile applications.",
-            image: "images/member2.jpg",
-            category: "designer",
-            skills: ["UI Design", "UX Research", "Figma", "Adobe XD", "Accessibility"]
-        },
-        {
-            id: 3,
-            name: "Eduardo Mendes",
-            title: "Data Scientist",
-            bio: "Python expert with focus on machine learning and AI solutions.",
-            image: "images/member3.jpg",
-            category: "data",
-            skills: ["Python", "Machine Learning", "TensorFlow", "Data Analysis", "SQL"]
-        },
-        {
-            id: 4,
-            name: "Juliana Costa",
-            title: "Backend Developer",
-            bio: "Java specialist with experience in microservices architecture.",
-            image: "images/member4.jpg",
-            category: "developer",
-            skills: ["Java", "Spring Boot", "Microservices", "Docker", "Kubernetes"]
-        },
-        {
-            id: 5,
-            name: "Paulo Martins",
-            title: "DevOps Engineer",
-            bio: "AWS certified professional focusing on CI/CD pipelines and cloud infrastructure.",
-            image: "images/member5.jpg",
-            category: "devops",
-            skills: ["AWS", "Docker", "Kubernetes", "Jenkins", "Terraform"]
-        },
-        {
-            id: 6,
-            name: "Fernanda Lima",
-            title: "Product Manager",
-            bio: "Agile enthusiast focusing on product development and team leadership.",
-            image: "images/member6.jpg",
-            category: "pm",
-            skills: ["Product Management", "Agile", "Scrum", "User Stories", "JIRA"]
-        }
-    ];
-    
-    // Get DOM elements
-    const membersList = document.getElementById('members-list');
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const searchInput = document.querySelector('.search-input');
-    
-    // Check if we're on the members page
-    if (membersList && filterButtons.length && searchInput) {
-        // Add event listeners to filter buttons
-        filterButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                // Update active filter button
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                this.classList.add('active');
-                
-                // Apply filtering and search
-                applyFilters();
-            });
-        });
-        
-        // Add event listener to search input
-        searchInput.addEventListener('input', function() {
-            applyFilters();
-        });
-        
-        // Function to apply both filters and search
-        function applyFilters() {
-            const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
-            const searchTerm = searchInput.value.toLowerCase();
-            
-            // Filter members based on category and search term
-            let filteredMembers;
-            
-            if (activeFilter === 'all') {
-                filteredMembers = [...members];
-            } else {
-                filteredMembers = members.filter(member => member.category === activeFilter);
-            }
-            
-            // Apply search filter if there's a search term
-            if (searchTerm) {
-                filteredMembers = filteredMembers.filter(member => {
-                    // Search in name, title, bio, and skills
-                    return (
-                        member.name.toLowerCase().includes(searchTerm) ||
-                        member.title.toLowerCase().includes(searchTerm) ||
-                        member.bio.toLowerCase().includes(searchTerm) ||
-                        member.skills.some(skill => skill.toLowerCase().includes(searchTerm))
-                    );
-                });
-            }
-            
-            // Render filtered members
-            renderMembers(filteredMembers);
-        }
-        
-        // Function to render members in the DOM
-        function renderMembers(membersList) {
-            // Clear the container
-            while (membersList.firstChild) {
-                membersList.innerHTML = '';
-            }
-            
-            if (membersList.length === 0) {
-                membersList.innerHTML = `
-                    <div class="no-members">
-                        <p>No members found matching your criteria.</p>
-                    </div>
-                `;
-                return;
-            }
-            
-            // Create HTML for each member
-            membersList.forEach(member => {
-                const memberHTML = document.createElement('div');
-                memberHTML.className = 'team-member';
-                memberHTML.innerHTML = `
-                    <img src="${member.image}" alt="${member.name}">
-                    <h3>${member.name}</h3>
-                    <p class="title">${member.title}</p>
-                    <p>${member.bio}</p>
-                    <div class="member-skills">
-                        ${member.skills.map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
-                    </div>
-                    <div class="member-social">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                    </div>
-                `;
-                membersList.appendChild(memberHTML);
-            });
-        }
-        
-        // Initial rendering of all members
-        applyFilters();
-    }
+    // Fetch member data from Google Sheet
+    fetchMembersData();
 });
+
+/**
+ * Fetch member data from Google Sheets CSV export
+ */
+async function fetchMembersData() {
+    const SHEET_ID = '1JE581FxYuN7hRhVjpDw7FnmKLZgDRpytOvLaJysXn-o';
+    const membersContainer = document.getElementById('members-container');
+    
+    if (!membersContainer) return;
+    
+    // Show loading state
+    membersContainer.innerHTML = '<div class="loading-state"><i class="fas fa-spinner fa-spin"></i> Loading members...</div>';
+    
+    try {
+        // Fetch CSV directly from Google Sheets public export URL
+        const response = await fetch(`https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv`);
+        
+        if (!response.ok) {
+            throw new Error('Failed to fetch data from Google Sheets');
+        }
+        
+        const csvText = await response.text();
+        const members = parseCSVToMembers(csvText);
+        
+        if (members.length === 0) {
+            membersContainer.innerHTML = '<p>No member profiles found in our directory.</p>';
+            return;
+        }
+        
+        // Display the retrieved member data
+        renderMemberProfiles(members, membersContainer);
+        
+    } catch (error) {
+        console.error('Error fetching member data:', error);
+        membersContainer.innerHTML = `
+            <div class="error-message">
+                <p><i class="fas fa-exclamation-circle"></i> Error loading member profiles: ${error.message}</p>
+                <p>Please try again later or <a href="contact.html">contact us</a> for assistance.</p>
+            </div>
+        `;
+    }
+}
+
+/**
+ * Parse CSV data to extract member information
+ * Column A: Member Name
+ * Column B: LinkedIn URL
+ */
+function parseCSVToMembers(csvText) {
+    const members = [];
+    const lines = csvText.split('\n');
+    
+    // Skip header row
+    for (let i = 1; i < lines.length; i++) {
+        const line = lines[i].trim();
+        if (!line) continue;
+        
+        // Split the line into columns (handle possible commas in the name)
+        const columns = line.split(',');
+        
+        // Extract name and LinkedIn URL
+        const name = columns[0].trim();
+        // Join the remaining columns in case the URL got split due to commas
+        const linkedInUrl = columns.slice(1).join(',').trim();
+        
+        if (name && linkedInUrl && linkedInUrl.includes('linkedin.com')) {
+            members.push({
+                name: name,
+                linkedInUrl: linkedInUrl
+            });
+        }
+    }
+    
+    return members;
+}
+
+/**
+ * Render member profiles from their names and LinkedIn URLs
+ */
+function renderMemberProfiles(members, container) {
+    let html = `<h2>${members.length} Community Members</h2>`;
+    
+    // Create grid to display member cards
+    html += '<div class="members-grid">';
+    
+    // Create a card for each member
+    members.forEach(member => {
+        html += `
+            <div class="member-card">
+                <div class="member-info">
+                    <h3>${member.name}</h3>
+                    <p class="member-note">LinkedIn Profile</p>
+                    <a href="${member.linkedInUrl}" target="_blank" rel="noopener noreferrer" class="linkedin-button">
+                        <i class="fab fa-linkedin"></i> View Profile
+                    </a>
+                </div>
+            </div>
+        `;
+    });
+    
+    html += '</div>';
+    
+    // Add a note about joining the directory
+    html += `
+        <div class="members-note">
+            <p><i class="fas fa-info-circle"></i> Want to be included in our directory? <a href="contact.html">Contact us</a> with your LinkedIn profile URL.</p>
+        </div>
+    `;
+    
+    container.innerHTML = html;
+    
+    // Make cards clickable (except the LinkedIn button which has its own handler)
+    document.querySelectorAll('.member-card').forEach(card => {
+        card.addEventListener('click', function(e) {
+            if (!e.target.closest('.linkedin-button')) {
+                const linkedinUrl = this.querySelector('.linkedin-button').getAttribute('href');
+                window.open(linkedinUrl, '_blank');
+            }
+        });
+        
+        // Add cursor style to indicate clickability
+        card.style.cursor = 'pointer';
+    });
+}
+
+// Add necessary styles for member cards
+document.head.insertAdjacentHTML('beforeend', `
+<style>
+    .members-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 20px;
+        margin: 30px 0;
+    }
+    
+    .member-card {
+        background-color: #f5f5f5;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        text-align: center;
+    }
+    
+    .member-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    }
+    
+    .member-info h3 {
+        margin-bottom: 5px;
+        font-size: 1.2rem;
+    }
+    
+    .member-note {
+        color: #666;
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+    }
+    
+    .linkedin-button {
+        display: inline-block;
+        background-color: #0077B5;
+        color: white;
+        padding: 8px 15px;
+        border-radius: 4px;
+        text-decoration: none;
+        transition: background-color 0.3s;
+    }
+    
+    .linkedin-button:hover {
+        background-color: #005e93;
+        color: white;
+    }
+    
+    .linkedin-button i {
+        margin-right: 5px;
+    }
+    
+    .loading-state {
+        text-align: center;
+        padding: 40px 0;
+        color: #555;
+    }
+    
+    .loading-state i {
+        margin-right: 10px;
+        color: #0077B5;
+    }
+    
+    .members-note {
+        text-align: center;
+        margin-top: 30px;
+        padding: 15px;
+        background-color: #f0f0f0;
+        border-radius: 8px;
+    }
+    
+    .error-message {
+        text-align: center;
+        padding: 20px;
+        background-color: #fff0f0;
+        border-left: 4px solid #ff3333;
+        margin: 20px 0;
+    }
+    
+    .error-message i {
+        color: #ff3333;
+        margin-right: 8px;
+    }
+    
+    @media (max-width: 768px) {
+        .members-grid {
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        }
+    }
+</style>
+`);

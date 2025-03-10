@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Members - TechBR Victoria</title>
-    <meta name="description" content="Meet the Brazilian IT professionals who are part of our community in Victoria, BC">
+    <title>Our Community - TechBR Victoria</title>
+    <meta name="description" content="Connect with Brazilian tech folks in our Victoria, BC community">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="icon" type="image/png" href="images/favicon.png">
@@ -38,100 +38,44 @@
 
     <section class="page-header">
         <div class="container">
-            <h1>Our Members</h1>
-            <p>The Brazilian tech talent community in Victoria, BC</p>
+            <h1>Our Community</h1>
+            <p>Connect with Brazilian tech folks in Victoria</p>
         </div>
     </section>
 
-    <section class="members">
+    <section class="linkedin-integration">
         <div class="container">
-            <div class="filters">
-                <h2>Find Members</h2>
-                <div class="filter-buttons">
-                    <button class="filter-btn active" data-filter="all">All</button>
-                    <button class="filter-btn" data-filter="developer">Developers</button>
-                    <button class="filter-btn" data-filter="designer">UX/UI Designers</button>
-                    <button class="filter-btn" data-filter="data">Data Scientists</button>
-                    <button class="filter-btn" data-filter="devops">DevOps</button>
-                    <button class="filter-btn" data-filter="pm">Product Managers</button>
-                </div>
-                <input type="text" class="search-input" placeholder="Search members by name or skills...">
-            </div>
-
-            <div class="members-container" id="members-list">
-                <div class="team-member">
-                    <img src="images/member1.jpg" alt="Member Photo">
-                    <h3>Rafael Silva</h3>
-                    <p class="title">Senior Frontend Developer</p>
-                    <p>Specialist in React and Vue.js with 8+ years experience.</p>
-                    <div class="member-social">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-
-                <div class="team-member">
-                    <img src="images/member2.jpg" alt="Member Photo">
-                    <h3>Camila Oliveira</h3>
-                    <p class="title">UX/UI Designer</p>
-                    <p>Creating accessible and inclusive designs for web and mobile applications.</p>
-                    <div class="member-social">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-dribbble"></i></a>
-                    </div>
-                </div>
-
-                <div class="team-member">
-                    <img src="images/member3.jpg" alt="Member Photo">
-                    <h3>Eduardo Mendes</h3>
-                    <p class="title">Data Scientist</p>
-                    <p>Python expert with focus on machine learning and AI solutions.</p>
-                    <div class="member-social">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-
-                <div class="team-member">
-                    <img src="images/member4.jpg" alt="Member Photo">
-                    <h3>Juliana Costa</h3>
-                    <p class="title">Backend Developer</p>
-                    <p>Java specialist with experience in microservices architecture.</p>
-                    <div class="member-social">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-
-                <div class="team-member">
-                    <img src="images/member5.jpg" alt="Member Photo">
-                    <h3>Paulo Martins</h3>
-                    <p class="title">DevOps Engineer</p>
-                    <p>AWS certified professional focusing on CI/CD pipelines and cloud infrastructure.</p>
-                    <div class="member-social">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-
-                <div class="team-member">
-                    <img src="images/member6.jpg" alt="Member Photo">
-                    <h3>Fernanda Lima</h3>
-                    <p class="title">Product Manager</p>
-                    <p>Agile enthusiast focusing on product development and team leadership.</p>
-                    <div class="member-social">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-medium"></i></a>
-                    </div>
-                </div>
-
-                <!-- More members would be added here -->
-            </div>
+            <h2>Find Us on LinkedIn</h2>
+            <p>Follow our LinkedIn company page to network with Brazilian tech professionals in Victoria and stay updated on opportunities and events.</p>
             
-            <div class="join-member-cta">
-                <h2>Join Our Community</h2>
-                <p>Are you a Brazilian tech professional living in Victoria? Become a member today!</p>
-                <a href="contact.html" class="btn primary">Apply Now</a>
+            <div class="linkedin-group">
+                <i class="fab fa-linkedin"></i>
+                <h3>TechBR Victoria on LinkedIn</h3>
+                <a href="https://www.linkedin.com/company/techbr-victoria/" target="_blank" class="btn primary">Follow Us on LinkedIn</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="members-section">
+        <div class="container">
+            <h2>Community Directory</h2>
+            <p>Meet the members of our tech community who have chosen to be listed in our public directory.</p>
+            
+            <div id="members-container">
+                <!-- Members will be loaded dynamically from Google Sheets -->
+                <div class="loading-state">
+                    <i class="fas fa-spinner fa-spin"></i> Loading members...
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="join-cta">
+        <div class="container">
+            <h2>Want to Join Our Community?</h2>
+            <p>If you're a Brazilian tech professional in Victoria, we'd love to welcome you!</p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="btn primary">Get In Touch</a>
             </div>
         </div>
     </section>
