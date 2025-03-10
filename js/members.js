@@ -160,6 +160,11 @@ document.head.insertAdjacentHTML('beforeend', `
         color: #091057;
     }
     
+    /* NEW: Improve spacing between title description and the LinkedIn button */
+    .member-title {
+        margin-bottom: 10px;
+    }
+    
     .member-note {
         color: #666;
         font-size: 0.9rem;

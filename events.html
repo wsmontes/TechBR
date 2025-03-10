@@ -14,7 +14,7 @@
         <div class="container">
             <div class="logo">
                 <a href="index.html">
-                    <img src="images/techbr-logo.png" alt="TechBR Victoria Logo">
+                    <span style="font-family: 'Courier New', Courier, monospace; font-size: 24px; line-height: 1;">TechBR</span>
                 </a>
             </div>
             <nav>
@@ -47,9 +47,13 @@
         <div class="container">
             <h2>Our Meetups</h2>
             <p>We organize casual gatherings to connect, share experiences, and help each other.</p>
+            <div id="events-list">
+                <!-- Events will be loaded dynamically -->
+                <div class="loading-state">
+                    <i class="fas fa-spinner fa-spin"></i> Loading events...
+                </div>
+            </div>
             
-            <!-- Removed event types listing -->
-
             <div class="upcoming-event-info">
                 <h3>Next Gathering</h3>
                 <p>Details about our next event will be shared in our WhatsApp group. To join the group and stay updated:</p>
@@ -66,8 +70,6 @@
         </div>
     </section>
 
-    <!-- Remove the existing footer block -->
-    <!-- Add footer placeholder -->
     <div id="footer-placeholder"></div>
     <script>
         fetch('footer-template.html')
