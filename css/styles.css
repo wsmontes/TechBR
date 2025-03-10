@@ -599,7 +599,7 @@ footer h3 {
 }
 
 footer p {
-    color: var(--light-text);
+    color: var (--light-text);
     opacity: 0.9;
 }
 
@@ -810,6 +810,13 @@ footer p {
         display: block;
     }
     
+    nav {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: auto;
+    }
+    
     nav ul {
         display: none;
         position: absolute;
@@ -835,7 +842,17 @@ footer p {
     }
     
     .language-toggle {
-        margin-left: 15px;
+        order: 1;
+        margin-right: 10px;
+    }
+    
+    .menu-toggle {
+        order: 2;
+    }
+    
+    /* Ensure header container keeps logo left and nav right */
+    header .container {
+        justify-content: space-between;
     }
     
     .about-mission .container,
