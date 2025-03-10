@@ -227,6 +227,16 @@ document.head.insertAdjacentHTML('beforeend', `
             grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
         }
     }
+    
+    .member-info {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+    
+    .linkedin-button {
+        margin-top: auto;
+    }
 </style>
 `);
 
