@@ -38,6 +38,6 @@ To work on this website locally:
 ## Contact
 
 Want to join our community? 
-- Email: hello@techbrvictoria.ca
+- Email: techbrvictoria@gmail.com
 - LinkedIn: [TechBR Victoria](https://www.linkedin.com/company/techbr-victoria/)
 - Or fill out the contact form on our website!
