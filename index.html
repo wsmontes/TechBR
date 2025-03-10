@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechBR Victoria - Brazilian IT Professionals in Victoria, BC</title>
+    <meta name="description" content="Community of Brazilian IT professionals working and living in Victoria, British Columbia, Canada">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/techbr-logo.png" alt="TechBR Victoria Logo">
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="members.html">Members</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="language-toggle">
+                    <a href="#" class="active">EN</a> | <a href="#">PT</a>
+                </div>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Brazilian Tech Talent in Victoria</h1>
+            <p>Connecting Brazilian IT professionals on Vancouver Island, creating opportunities and fostering community.</p>
+            <div class="hero-buttons">
+                <a href="about.html" class="btn primary">Learn More</a>
+                <a href="contact.html" class="btn secondary">Join Us</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <div class="feature-card">
+                <i class="fas fa-users"></i>
+                <h3>Community</h3>
+                <p>Connect with fellow Brazilian tech professionals in Victoria and build your network.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-briefcase"></i>
+                <h3>Opportunities</h3>
+                <p>Access job listings, mentorship, and career advancement resources.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-calendar-alt"></i>
+                <h3>Events</h3>
+                <p>Join our regular meetups, workshops, and social gatherings.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-globe-americas"></i>
+                <h3>Resources</h3>
+                <p>Find valuable information about living and working in Victoria.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="upcoming-events">
+        <div class="container">
+            <h2>Upcoming Events</h2>
+            <div class="events-container" id="upcoming-events-list">
+                <!-- Events will be loaded via JavaScript -->
+                <div class="event-placeholder">Loading events...</div>
+            </div>
+            <a href="events.html" class="btn primary">See All Events</a>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2>Community Voices</h2>
+            <div class="testimonial-slider" id="testimonials-container">
+                <div class="testimonial">
+                    <p>"Finding TechBR was a game-changer when I moved to Victoria. The community helped me settle in and find my first job in Canada."</p>
+                    <div class="testimonial-author">
+                        <img src="images/placeholder-profile.jpg" alt="Community Member">
+                        <h4>Ana Silva</h4>
+                        <p>Software Developer</p>
+                    </div>
+                </div>
+                <!-- More testimonials to be added -->
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>TechBR Victoria</h3>
+                    <p>A community of Brazilian IT professionals in Victoria, BC, Canada.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-meetup"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="members.html">Members</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-envelope"></i> info@techbrvictoria.ca</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Victoria, BC, Canada</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 TechBR Victoria. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/events.js"></script>
+</body>
+</html>
