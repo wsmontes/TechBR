@@ -1,140 +1,257 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - TechBR Victoria</title>
-    <meta name="description" content="Get in touch with the Brazilian IT professionals community in Victoria, BC">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="icon" type="image/png" href="images/favicon.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - TechBR Victoria</title>
+  <meta name="description" content="Get in touch with the Brazilian IT professionals community in Victoria, BC">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="logo">
-                <a href="index.html">
-                    <span style="font-family: 'Poppins', sans-serif; font-size: 24px; font-weight: 700; line-height: 1;">TechBR</span>
-                </a>
+  <header>
+    <div class="container">
+      <div class="logo">
+        <a href="index.html">
+          <span style="font-family: 'Poppins', sans-serif; font-size: 24px; font-weight: 700; line-height: 1;">TechBR</span>
+        </a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="members.html">Members</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+        <div class="language-toggle">
+          <a href="#" class="active">EN</a> | <a href="#">PT</a>
+        </div>
+        <div class="menu-toggle">
+          <i class="fas fa-bars"></i>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-header">
+    <div class="container">
+      <h1>Say Hello!</h1>
+      <p>Get in touch with our community</p>
+    </div>
+  </section>
+
+  <section class="contact-main">
+    <div class="container">
+      <p class="contact-intro">Want to join our community? Have questions? Just want to chat? Drop us a message and one of us will get back to you!</p>
+      
+      <div class="contact-container">
+        <div class="contact-info">
+          <h3>Let's Connect</h3>
+          <p><i class="fas fa-envelope"></i> techbrvictoria@gmail.com</p>
+          <p><i class="fas fa-map-marker-alt"></i> All around Victoria, BC!</p>
+          <p><i class="fas fa-comment"></i> Or join our WhatsApp community</p>
+          
+          <div class="social-contact">
+            <h3>Find Us Online</h3>
+            <div class="social-links">
+              <a href="https://www.linkedin.com/company/techbr-victoria/" target="_blank"><i class="fab fa-linkedin"></i></a>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="members.html">Members</a></li>
-                    <li><a href="events.html">Events</a></li>
-                    <li><a href="resources.html">Resources</a></li>
-                    <li><a href="contact.html" class="active">Contact</a></li>
-                </ul>
-                <div class="language-toggle">
-                    <a href="#" class="active">EN</a> | <a href="#">PT</a>
-                </div>
-                <div class="menu-toggle">
-                    <i class="fas fa-bars"></i>
-                </div>
-            </nav>
+          </div>
+          
+          <div class="connect-highlight">
+            <h4>WhatsApp Community Registration</h4>
+            <p>To join our WhatsApp group, fill out the form with your details. After admin approval, you'll receive an invite link. Our group discussions include job opportunities, tech talk, and everyday life in Victoria.</p>
+          </div>
         </div>
-    </header>
-
-    <section class="page-header">
-        <div class="container">
-            <h1>Say Hello!</h1>
-            <p>Get in touch with our community</p>
-        </div>
-    </section>
-
-    <section class="contact-main">
-        <div class="container">
-            <p class="contact-intro">Want to join our community? Have questions? Just want to chat? Drop us a message and one of us will get back to you!</p>
+        
+        <div class="contact-form">
+          <h3>Get In Touch</h3>
+          <form id="contactForm" action="#" method="POST" novalidate aria-labelledby="formTitle">
+            <h4 id="formTitle" class="sr-only">Contact Form</h4>
+            <div aria-live="polite" id="formFeedback" class="form-feedback"></div>
             
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Let's Connect</h3>
-                    <p><i class="fas fa-envelope"></i> techbrvictoria@gmail.com</p>
-                    <p><i class="fas fa-map-marker-alt"></i> All around Victoria, BC!</p>
-                    <p><i class="fas fa-comment"></i> Or join our WhatsApp community</p>
-                    
-                    <div class="social-contact">
-                        <h3>Find Us Online</h3>
-                        <div class="social-links">
-                            <a href="https://www.linkedin.com/company/techbr-victoria/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        </div>
-                    </div>
-                    
-                    <div class="connect-highlight">
-                        <h4>WhatsApp Community Registration</h4>
-                        <p>To join our WhatsApp group, fill out the form with your details. After admin approval, you'll receive an invite link. Our group discussions include job opportunities, tech talk, and everyday life in Victoria.</p>
-                    </div>
-                </div>
-                
-                <div class="contact-form">
-                    <h3>Get In Touch</h3>
-                    <form id="contactForm" action="#" method="POST">
-                        <div class="form-group">
-                            <label for="name">Your Name</label>
-                            <input type="text" id="name" name="name" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Your Email</label>
-                            <input type="email" id="email" name="email" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">What's this about?</label>
-                            <select id="subject" name="subject" class="form-control" required>
-                                <option value="" selected disabled>Choose one...</option>
-                                <option value="register">Join WhatsApp Group</option>
-                                <option value="event">Event Idea</option>
-                                <option value="question">General Question</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Your Message</label>
-                            <textarea id="message" name="message" class="form-control" required></textarea>
-                        </div>
-                        <div class="form-group form-checkbox">
-                            <input type="checkbox" id="whatsapp" name="whatsapp" checked>
-                            <label for="whatsapp">I'd like to join the WhatsApp group</label>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn primary">Send Message</button>
-                        </div>
-                    </form>
-                </div>
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" class="form-control" required 
+                     autocomplete="name" aria-required="true">
             </div>
             
-            <div class="contact-alternatives">
-                <br>
-                <h2 style="margin-top: 20px;">Prefer to Meet in Person?</h2>
-                <p>The best way to connect is to join one of our upcoming gatherings! Check out our <a href="events.html">events page</a> to see when we're meeting next.</p>
-                <br>
-                <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d42362.90141927008!2d-123.37853326354642!3d48.433864211392835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x548f738bddb06171%3A0x38e8f3741ebb48ed!2sVictoria%2C%20BC%2C%20Canada!5e0!3m2!1sen!2sus!4v1650209000000!5m2!1sen!2sus" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
+            <div class="form-group">
+              <label for="email">Your Email</label>
+              <input type="email" id="email" name="email" class="form-control" required 
+                     autocomplete="email" aria-required="true" 
+                     pattern="[^@\s]+@[^@\s]+\.[^@\s]+">
             </div>
+            
+            <div class="form-group">
+              <label for="subject">What's this about?</label>
+              <select id="subject" name="subject" class="form-control" required aria-required="true">
+                <option value="" selected disabled>Choose one...</option>
+                <option value="register">Join WhatsApp Group</option>
+                <option value="event">Event Idea</option>
+                <option value="question">General Question</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="message">Your Message</label>
+              <textarea id="message" name="message" class="form-control" required 
+                        aria-required="true" rows="4"></textarea>
+            </div>
+            
+            <div class="form-group form-checkbox">
+              <input type="checkbox" id="whatsapp" name="whatsapp" checked>
+              <label for="whatsapp">I'd like to join the WhatsApp group</label>
+            </div>
+            
+            <!-- Honeypot field to catch bots -->
+            <div class="hp-field" aria-hidden="true">
+              <label for="website">Website (leave empty)</label>
+              <input type="text" id="website" name="website" autocomplete="off" tabindex="-1">
+            </div>
+            
+            <div class="form-group">
+              <button type="submit" class="btn primary" id="submitBtn">
+                <span>Send Message</span>
+                <span class="spinner hidden"></span>
+              </button>
+            </div>
+          </form>
         </div>
-    </section>
-
-    <section class="whatsapp-group">
-        <div class="container">
-            <h2>Join Our WhatsApp Community</h2>
-            <p>Our WhatsApp group is where most of the action happens - job postings, impromptu gatherings, questions about life in Victoria, and more!</p>
-            <a href="#contactForm" class="btn primary">Request to Join</a>
+      </div>
+      
+      <div class="contact-alternatives">
+        <br>
+        <h2 style="margin-top: 20px;">Prefer to Meet in Person?</h2>
+        <p>The best way to connect is to join one of our upcoming gatherings! Check out our <a href="events.html">events page</a> to see when we're meeting next.</p>
+        <br>
+        <div class="map-container">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d42362.90141927008!2d-123.37853326354642!3d48.433864211392835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x548f738bddb06171%3A0x38e8f3741ebb48ed!2sVictoria%2C%20BC%2C%20Canada!5e0!3m2!1sen!2sus!4v1650209000000!5m2!1sen!2sus" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Remove existing hardcoded footer -->
-    <!-- Insert footer placeholder -->
-    <div id="footer-placeholder"></div>
-    <script>
-        fetch('footer-template.html')
-            .then(response => response.text())
-            .then(html => {
-                document.getElementById('footer-placeholder').innerHTML = html;
-            })
-            .catch(err => console.error('Error loading footer:', err));
-    </script>
+  <section class="whatsapp-group">
+    <div class="container">
+      <h2>Join Our WhatsApp Community</h2>
+      <p>Our WhatsApp group is where most of the action happens - job postings, impromptu gatherings, questions about life in Victoria, and more!</p>
+      <a href="#contactForm" class="btn primary">Request to Join</a>
+    </div>
+  </section>
 
-    <script src="js/main.js"></script>
-    <script src="js/contact.js"></script>
+  <div id="footer-placeholder"></div>
+  <script>
+    fetch('footer-template.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('footer-placeholder').innerHTML = html;
+      })
+      .catch(err => console.error('Error loading footer:', err));
+  </script>
+
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <!-- EmailJS configuration - LOAD THIS FIRST -->
+  <script src="js/emailjs-config.js"></script>
+  <!-- Include form recovery script -->
+  <script src="js/form-recovery.js"></script>
+  <!-- Include test script to help debug EmailJS issues -->
+  <script src="js/email-test.js"></script>
+  <!-- Load main JS after EmailJS is fully loaded -->
+  <script src="js/main.js"></script>
+  <!-- Load contact JS last so it has access to everything -->
+  <script src="js/contact.js"></script>
+
+  <script>
+    // Add this script to debug any form interference
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('DOM fully loaded, monitoring form element values');
+      
+      // Check if form exists immediately
+      const form = document.getElementById('contactForm');
+      if (form) {
+        console.log('Form found on page load:', form);
+        monitorFormValues();
+      }
+      
+      // Set interval to check for value changes
+      function monitorFormValues() {
+        const checkInterval = setInterval(function() {
+          const nameField = document.getElementById('name');
+          const emailField = document.getElementById('email');
+          const subjectField = document.getElementById('subject');
+          const messageField = document.getElementById('message');
+          
+          if (!nameField || !emailField || !subjectField || !messageField) {
+            console.warn('Form fields missing! Form structure may have been modified.');
+            return;
+          }
+          
+          if (!nameField.value && nameField.getAttribute('data-last-value')) {
+            console.warn('Name field value lost! Restoring from data attribute');
+            nameField.value = nameField.getAttribute('data-last-value');
+          }
+          
+          if (!emailField.value && emailField.getAttribute('data-last-value')) {
+            console.warn('Email field value lost! Restoring from data attribute');
+            emailField.value = emailField.getAttribute('data-last-value');
+          }
+          
+          if (!subjectField.value && subjectField.getAttribute('data-last-value')) {
+            console.warn('Subject field value lost! Restoring from data attribute');
+            subjectField.value = subjectField.getAttribute('data-last-value');
+          }
+          
+          if (!messageField.value && messageField.getAttribute('data-last-value')) {
+            console.warn('Message field value lost! Restoring from data attribute');
+            messageField.value = messageField.getAttribute('data-last-value');
+          }
+        }, 1000);
+        
+        // Stop checking after 30 seconds to avoid performance issues
+        setTimeout(() => clearInterval(checkInterval), 30000);
+      }
+    });
+  </script>
+
+  <style>
+    .hp-field {
+      display: none !important;
+    }
+    
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+    
+    .spinner {
+      display: inline-block;
+      width: 1rem;
+      height: 1rem;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      border-top-color: #fff;
+      animation: spin 1s linear infinite;
+      margin-left: 0.5rem;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    .hidden {
+      display: none;
+    }
+  </style>
 </body>
 </html>
