@@ -83,6 +83,18 @@ function parseCSVToMembers(csvText) {
     return members;
 }
 
+// Add this helper function somewhere in your file
+function sanitizeText(text) {
+    if (!text) return '';
+    
+    // Remove leading quotation marks if they exist
+    if (text.startsWith('"')) {
+        text = text.substring(1);
+    }
+    
+    return text;
+}
+
 /**
  * Render member profiles using the provided member name, LinkedIn URL, and expertise
  */
@@ -94,7 +106,7 @@ function renderMemberProfiles(members, container) {
             <div class="member-card">
                 <div class="member-info">
                     <h3>${member.name}</h3>
-                    <div class="member-title">${member.expertise}</div>
+                    <div class="member-title">${sanitizeText(member.expertise)}</div>
                     <a href="${member.linkedInUrl}" target="_blank" rel="noopener noreferrer" class="linkedin-button">
                         <i class="fab fa-linkedin"></i> View Profile
                     </a>
