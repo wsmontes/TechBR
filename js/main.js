@@ -51,20 +51,7 @@ function initMobileMenu() {
         });
     }
     
-    // Language toggle functionality
-    const langLinks = document.querySelectorAll('.language-toggle a');
-    
-    langLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            langLinks.forEach(l => l.classList.remove('active'));
-            this.classList.add('active');
-            
-            // Simple language switch (would be expanded in real implementation)
-            alert('Language switching would be implemented in a real application');
-        });
-    });
+    // Language toggle functionality removed
 }
 
 // Smooth scrolling for anchor links

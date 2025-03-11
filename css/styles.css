@@ -180,23 +180,7 @@ nav ul li a.active {
     color: var(--primary-color);
 }
 
-.language-toggle {
-    margin-left: var(--space-xl);
-    background: var(--medium-bg);
-    padding: 6px 12px;
-    border-radius: var(--border-radius-sm);
-}
-
-.language-toggle a {
-    color: var(--dark-text);
-    font-weight: 500;
-    padding: 0 5px;
-}
-
-.language-toggle a.active {
-    color: var(--primary-color);
-    font-weight: 600;
-}
+/* Remove language-toggle CSS rules */
 
 .menu-toggle {
     display: none;
@@ -839,11 +823,6 @@ footer p {
     nav ul li a {
         display: block;
         padding: 15px 20px;
-    }
-    
-    .language-toggle {
-        order: 1;
-        margin-right: 20px; /* additional space if needed */
     }
     
     .menu-toggle {
