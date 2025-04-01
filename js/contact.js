@@ -574,52 +574,6 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
     document.head.appendChild(style);
     
-    // Add manual validation test function with updated approach
-    window.testFormValidation = function() {
-        console.log("Testing form validation...");
-        console.log("Form data storage:", {...formDataStorage});
-        
-        const errors = validateFormData(formDataStorage);
-        console.log("Validation errors:", errors);
-        return errors.length === 0;
-    };
-    
-    window.fillTestData = function() {
-        // Directly set values in our storage
-        formDataStorage.name = "Test User";
-        formDataStorage.email = "test@example.com";
-        formDataStorage.subject = "register";
-        formDataStorage.message = "This is a test message";
-        
-        // Also update the DOM if possible
-        const nameField = document.querySelector('#name');
-        const emailField = document.querySelector('#email');
-        const subjectField = document.querySelector('#subject');
-        const messageField = document.querySelector('#message');
-        
-        if (nameField) {
-            nameField.value = formDataStorage.name;
-            nameField.setAttribute('data-last-value', formDataStorage.name);
-        }
-        
-        if (emailField) {
-            emailField.value = formDataStorage.email;
-            emailField.setAttribute('data-last-value', formDataStorage.email);
-        }
-        
-        if (subjectField) {
-            subjectField.value = formDataStorage.subject;
-            subjectField.setAttribute('data-last-value', formDataStorage.subject);
-        }
-        
-        if (messageField) {
-            messageField.value = formDataStorage.message;
-            messageField.setAttribute('data-last-value', formDataStorage.message);
-        }
-        
-        console.log("Test data filled in storage and form (if elements exist)");
-    };
-    
     // Add a direct email test function using our storage values
     window.sendStoredDataEmail = function() {
         if (Object.values(formDataStorage).some(v => v === '' || v === null || v === undefined)) {

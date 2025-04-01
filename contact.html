@@ -34,7 +34,6 @@
           <li><a href="resources.html">Resources</a></li>
           <li><a href="contact.html" class="active">Contact</a></li>
         </ul>
-        <!-- Language toggle removed -->
         <div class="menu-toggle">
           <i class="fas fa-bars"></i>
         </div>
@@ -160,68 +159,10 @@
   </script>
 
   <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-  <!-- EmailJS configuration - LOAD THIS FIRST -->
   <script src="js/emailjs-config.js"></script>
-  <!-- Include form recovery script -->
   <script src="js/form-recovery.js"></script>
-  <!-- Include test script to help debug EmailJS issues -->
-  <script src="js/email-test.js"></script>
-  <!-- Load main JS after EmailJS is fully loaded -->
   <script src="js/main.js"></script>
-  <!-- Load contact JS last so it has access to everything -->
   <script src="js/contact.js"></script>
-
-  <script>
-    // Add this script to debug any form interference
-    document.addEventListener('DOMContentLoaded', function() {
-      console.log('DOM fully loaded, monitoring form element values');
-      
-      // Check if form exists immediately
-      const form = document.getElementById('contactForm');
-      if (form) {
-        console.log('Form found on page load:', form);
-        monitorFormValues();
-      }
-      
-      // Set interval to check for value changes
-      function monitorFormValues() {
-        const checkInterval = setInterval(function() {
-          const nameField = document.getElementById('name');
-          const emailField = document.getElementById('email');
-          const subjectField = document.getElementById('subject');
-          const messageField = document.getElementById('message');
-          
-          if (!nameField || !emailField || !subjectField || !messageField) {
-            console.warn('Form fields missing! Form structure may have been modified.');
-            return;
-          }
-          
-          if (!nameField.value && nameField.getAttribute('data-last-value')) {
-            console.warn('Name field value lost! Restoring from data attribute');
-            nameField.value = nameField.getAttribute('data-last-value');
-          }
-          
-          if (!emailField.value && emailField.getAttribute('data-last-value')) {
-            console.warn('Email field value lost! Restoring from data attribute');
-            emailField.value = emailField.getAttribute('data-last-value');
-          }
-          
-          if (!subjectField.value && subjectField.getAttribute('data-last-value')) {
-            console.warn('Subject field value lost! Restoring from data attribute');
-            subjectField.value = subjectField.getAttribute('data-last-value');
-          }
-          
-          if (!messageField.value && messageField.getAttribute('data-last-value')) {
-            console.warn('Message field value lost! Restoring from data attribute');
-            messageField.value = messageField.getAttribute('data-last-value');
-          }
-        }, 1000);
-        
-        // Stop checking after 30 seconds to avoid performance issues
-        setTimeout(() => clearInterval(checkInterval), 30000);
-      }
-    });
-  </script>
 
   <style>
     .hp-field {

@@ -1,5 +1,4 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
 
@@ -9,11 +8,11 @@ const port = 3000;
 // Enable CORS for all routes
 app.use(cors());
 
-// Parse URL-encoded bodies (as sent by HTML forms)
-app.use(bodyParser.urlencoded({ extended: true }));
-
 // Parse JSON bodies (as sent by API clients)
-app.use(bodyParser.json());
+app.use(express.json());
+
+// Parse URL-encoded bodies (as sent by HTML forms)
+app.use(express.urlencoded({ extended: true }));
 
 app.post('/api/send-email', (req, res) => {
     const { name, email, subject, message, whatsapp } = req.body;
